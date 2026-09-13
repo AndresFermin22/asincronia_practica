@@ -19,3 +19,4 @@
 
 export { listarTareasPendientes } from './ejercicio1.js';
 export { buscarUsuarioYAlbumes } from './ejercicio2.js';
+export { filtrarPostsYComentarios } from './ejercicio3.js'; 

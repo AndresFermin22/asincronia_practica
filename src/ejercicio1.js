@@ -54,7 +54,7 @@ export const listarTareasPendientes = async () => {
 
         // Ciclo principal para procesar los datos
         users.forEach(user => {
-            console.log(`\n👤 Usuario: ${user.name}`);
+            console.log(`\nUsuario: ${user.name}`);
             
             // Filtramos usando programación funcional e inmutabilidad
             const tareasPendientes = todos.filter(todo => todo.userId === user.id && !todo.completed);

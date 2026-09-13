@@ -1,7 +1,5 @@
 /**
- * ============================================================================
  * DOCUMENTACIÓN DEL PROCESO: buscarUsuarioYAlbumes
- * ============================================================================
  * Propósito: Solicitar un username, buscarlo en la API y listar sus álbumes 
  * anidando las fotografías correspondientes mediante estructuración de objetos.
  * 
@@ -26,9 +24,8 @@
  * Parámetros y Retornos:
  * - Parámetros: 'rl' (Readline Interface)
  * - Retorno: Promise<void>
- * ============================================================================
+
  * DOCUMENTO DE EVALUACIÓN (PRUEBAS)
- * ============================================================================
  * - Datos de pruebas: Username "Bret" (válido), "Admin" (inválido).
  * - Razón de elección: Probar tanto el flujo ideal de datos anidados como la 
  *   validación de usuario inexistente.
@@ -36,10 +33,8 @@
  * - Resultados esperados: Datos personales de Bret seguidos de la lista de sus
  *   álbumes y las fotos de cada uno.
  * - Errores controlados: try/catch envolviendo todo el proceso fetch.
- * ============================================================================
  */
 
-// Función auxiliar para convertir el callback de readline en una Promesa asíncrona
 const preguntar = (rl, pregunta) => {
     return new Promise((resolve) => {
         rl.question(pregunta, (respuesta) => resolve(respuesta.trim()));
@@ -63,14 +58,14 @@ export const buscarUsuarioYAlbumes = async (rl) => {
 
         // Validación: Si no existe, cortamos la ejecución (Early Return)
         if (!usuarioEncontrado) {
-            console.log(`\n❌ ¡Búsqueda fallida! No existe un usuario con el username: "${usernameIngresado}"`);
+            console.log(`\n¡Búsqueda fallida! No existe un usuario con el username: "${usernameIngresado}"`);
             return; 
         }
 
         // 4. Mostrar datos del usuario
-        console.log(`\n✅ Usuario encontrado: ${usuarioEncontrado.name} (Alias: ${usuarioEncontrado.username})`);
-        console.log(`📧 Email: ${usuarioEncontrado.email} | 📞 Tel: ${usuarioEncontrado.phone}`);
-        console.log(`⏳ Cargando álbumes y fotografías...`);
+        console.log(`\nUsuario encontrado: ${usuarioEncontrado.name} (Alias: ${usuarioEncontrado.username})`);
+        console.log(`Email: ${usuarioEncontrado.email} | Tel: ${usuarioEncontrado.phone}`);
+        console.log(`Cargando álbumes y fotografías...`);
 
         // 5. Peticiones concurrentes optimizadas para los recursos del usuario encontrado
         const [resAlbums, resPhotos] = await Promise.all([
@@ -99,18 +94,17 @@ export const buscarUsuarioYAlbumes = async (rl) => {
         console.log(`======================================================`);
         
         albumesCompletos.forEach(album => {
-            console.log(`\n📂 ÁLBUM: ${album.title} (ID: ${album.id})`);
+            console.log(`\nÁLBUM: ${album.title} (ID: ${album.id})`);
             console.log(`   Contiene ${album.fotografias.length} fotografías:`);
             
-            // Limitamos a mostrar solo 3 fotos por álbum para no saturar la consola
             const fotosMuestra = album.fotografias.slice(0, 3); 
             fotosMuestra.forEach(foto => {
-                console.log(`     🖼️ [Foto ID: ${foto.id}] - ${foto.title}`);
+                console.log(`[Foto ID: ${foto.id}] - ${foto.title}`);
             });
             console.log(`     ... y ${album.fotografias.length - 3} fotos más.`);
         });
 
     } catch (error) {
-        console.error('\n❌ Hubo un error en la ejecución:', error.message);
+        console.error('\nHubo un error en la ejecución:', error.message);
     }
 };

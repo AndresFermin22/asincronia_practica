@@ -1,5 +1,6 @@
 import readline from 'readline';
 import { listarTareasPendientes, buscarUsuarioYAlbumes } from './src/index.js';
+import { listarTareasPendientes, buscarUsuarioYAlbumes, filtrarPostsYComentarios } from './src/index.js';
 
 /**
  * ============================================================================
@@ -23,7 +24,8 @@ const mostrarMenu = () => {
     console.log('   EVALUACIÓN DE SABERES - MENÚ PRINCIPAL');
     console.log('=======================================');
     console.log('1. Listar tareas pendientes por usuario');
-    console.log('2. Buscar usuario, álbumes y fotos'); 
+    console.log('2. Buscar usuario, álbumes y fotos');
+    console.log('3. Buscar posts y agregar comentarios'); 
     console.log('0. Salir');
     console.log('=======================================');
     
@@ -37,6 +39,11 @@ const mostrarMenu = () => {
             case '2': // <- Nuevo caso
                 console.log('\n--- Ejecutando Ejercicio 2 ---');
                 await buscarUsuarioYAlbumes(rl); 
+                mostrarMenu();
+                break;
+            case '3':
+                console.log('\n--- Ejecutando Ejercicio 3 ---');
+                await filtrarPostsYComentarios(rl);
                 mostrarMenu();
                 break;
             case '0':
