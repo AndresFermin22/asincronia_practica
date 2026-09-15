@@ -2,7 +2,7 @@ import readline from 'readline';
 import { listarTareasPendientes, buscarUsuarioYAlbumes } from './src/index.js';
 import { listarTareasPendientes, buscarUsuarioYAlbumes, filtrarPostsYComentarios } from './src/index.js';
 import { listarTareasPendientes, buscarUsuarioYAlbumes, filtrarPostsYComentarios,  modificarEstructuraUsuarios } from './src/index.js';
-
+import { listarTareasPendientes,  buscarUsuarioYAlbumes, filtrarPostsYComentarios, modificarEstructuraUsuarios,obtenerUsuariosCompletos  } from './src/index.js';
 /**
  * ============================================================================
  * DOCUMENTACIÓN DEL PROCESO: app.js (Menú Principal)
@@ -28,6 +28,7 @@ const mostrarMenu = () => {
     console.log('2. Buscar usuario, álbumes y fotos');
     console.log('3. Buscar posts y agregar comentarios'); 
     console.log('4. Modificar estructura de usuarios (Nombre y Teléfono)');
+    console.log('5. Generar y estructurar usuarios completos (Posts, Comments, Albums, Photos)');
     console.log('0. Salir');
     
     rl.question('Elige una opción: ', async (opcion) => {
@@ -50,6 +51,11 @@ const mostrarMenu = () => {
             case '4':
                 console.log('\n--- Ejecutando Ejercicio 4 ---');
                 await modificarEstructuraUsuarios();
+                mostrarMenu();
+                break;
+            case '5':
+                console.log('\n--- Ejecutando Ejercicio 5 ---');
+                await obtenerUsuariosCompletos();
                 mostrarMenu();
                 break;
             case '0':
