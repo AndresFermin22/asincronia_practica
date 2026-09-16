@@ -1,7 +1,4 @@
 import readline from 'readline';
-import { listarTareasPendientes, buscarUsuarioYAlbumes } from './src/index.js';
-import { listarTareasPendientes, buscarUsuarioYAlbumes, filtrarPostsYComentarios } from './src/index.js';
-import { listarTareasPendientes, buscarUsuarioYAlbumes, filtrarPostsYComentarios,  modificarEstructuraUsuarios } from './src/index.js';
 import { listarTareasPendientes,  buscarUsuarioYAlbumes, filtrarPostsYComentarios, modificarEstructuraUsuarios,obtenerUsuariosCompletos  } from './src/index.js';
 /**
  * ============================================================================
@@ -21,9 +18,7 @@ const rl = readline.createInterface({
 });
 
 const mostrarMenu = () => {
-    console.log('\n=======================================');
     console.log('   EVALUACIÓN DE SABERES - MENÚ PRINCIPAL');
-    console.log('=======================================');
     console.log('1. Listar tareas pendientes por usuario');
     console.log('2. Buscar usuario, álbumes y fotos');
     console.log('3. Buscar posts y agregar comentarios'); 
